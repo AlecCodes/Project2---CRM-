@@ -49,7 +49,8 @@ router.get("/new", (req,res)=>{
 
 //CREATE route
 router.post("/", (req,res)=>{
-    // req.body.Creator = req.session.username
+    req.body.creator = req.session.username
+    console.log(req.body.creator)
     Customer.create(req.body, (err, createdCust) =>{
         res.redirect("/customers")
     })
