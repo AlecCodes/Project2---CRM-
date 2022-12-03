@@ -32,6 +32,11 @@ router.get("/seed",(req,res)=>{
     })
 })
 
+//NEW route
+router.get("/new", (req,res)=>{
+    res.render("new.ejs")
+})
+
 //SHOW route
 router.get("/",(req,res)=>{
     Customer.find({})
