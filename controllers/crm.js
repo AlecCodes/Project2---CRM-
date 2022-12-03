@@ -32,16 +32,33 @@ router.get("/seed",(req,res)=>{
     })
 })
 
+
+//INDEX route
+router.get("/",(req,res)=>{
+    Customer.find({})
+    .then((customers)=>{
+        res.render('home.ejs',{customers})
+    })
+})
+
 //NEW route
 router.get("/new", (req,res)=>{
     res.render("new.ejs")
 })
 
-//SHOW route
-router.get("/",(req,res)=>{
-    Customer.find({})
-    .then((customers)=>{
-        res.render('home.ejs',{customers})
+
+//CREATE route
+router.post("/", (req,res)=>{
+    Customer.create(req.body, (err, createdCust) =>{
+        res.redirect("/customers")
+    })
+})
+
+//SHOW Route
+router.get("/:id",(req, res)=>{
+    Customer.findById(req.body.id)
+    .then((customer)=>{
+        res.render("show.ejs",{customer})
     })
 })
 
