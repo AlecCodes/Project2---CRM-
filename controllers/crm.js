@@ -36,7 +36,7 @@ router.get("/seed",(req,res)=>{
 router.get("/",(req,res)=>{
     Customer.find({})
     .then((customers)=>{
-        res.json(customers)
+        res.render('home.ejs',{customers})
     })
 })
 

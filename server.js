@@ -1,11 +1,11 @@
-//const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo')
 const express = require('express')
 require('dotenv').config()
 const morgan = require('morgan')
-// const session = require('express-session')
-// const methodOverride = require("method-override")
+const session = require('express-session')
+const methodOverride = require("method-override")
 const PORT = process.env.PORT || 3300
-// const crmRouter = require('./controllers/crm')
+const crmRouter = require('./controllers/crm')
 const app = express();
 
 ////////////////////////////////
@@ -23,7 +23,7 @@ app.use("/static",express.static("public"))
 //     resave: false
 // }))
 
-// app.use('/customers', crmRouter)
+app.use('/customers', crmRouter)
 
 app.get("/",(req,res)=>{
     res.render("home.ejs")

@@ -8,5 +8,22 @@
 </head>
 <body>
     <h1>HIIIIII</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <% for (let i = 0; i < customers.length; i++) {%>
+                <>
+                <td><%= customers[i].name %></td>
+                <td><%= customers[i].DOB%></td>
+            <% } %>
+            </tr>
+        </tbody>  
+    </table>
 </body>
 </html>
