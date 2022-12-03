@@ -1,0 +1,1 @@
+### When an entry is made for a user, have a record of the active session's username associated and displayed with each entry or change. Could we use req.session.username for this?
