@@ -46,6 +46,13 @@ router.get("/new", (req,res)=>{
     res.render("customers/new.ejs")
 })
 
+//DESTROY route
+router.post("/:id",(req,res)=>{
+    Customer.findByIdAndDelete(req.params.id, (err,deletedCust) =>{
+        console.log(err,deletedCust)
+        res.redirect('/customers')
+    })
+})
 
 //CREATE route
 router.post("/", (req,res)=>{
@@ -63,6 +70,7 @@ router.get("/:id",(req, res)=>{
         res.render("customers/show.ejs",{customer})
     })
 })
+
 
 ////////////////////////////
 //EXPORT
