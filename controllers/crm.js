@@ -9,13 +9,13 @@ const router = express.Router()
 //////////////////////////
 //ROUTER MIDDLEWARE This is where we check if user is logged into active session
 //////////////////////////
-// router.use((req,res,next)=>{
-//     if(req.session.loggedIn){
-//         next();
-//     } else {
-//         res.redirect("/user/login")
-//     }
-// })
+router.use((req,res,next)=>{
+    if(req.session.loggedIn){
+        next();
+    } else {
+        res.redirect("/user/login")
+    }
+})
 
 /////////////////////////////
 //ROUTES
@@ -60,9 +60,7 @@ router.post("/", (req,res)=>{
 router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)
     .then((customer) => {
-        //res.render("customers/show.ejs",{customer})
-        res.send(customer)
-        console.log(customer)
+        res.render("customers/show.ejs",{customer})
     })
 })
 
