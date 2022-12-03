@@ -16,13 +16,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
             <% for (let i = 0; i < customers.length; i++) {%>
-                <>
-                <td><%= customers[i].name %></td>
-                <td><%= customers[i].DOB%></td>
+                <tr>
+                    <td><%= customers[i].name %></td>
+                    <td><%= customers[i].DOB%></td>
+                </tr>
             <% } %>
-            </tr>
         </tbody>  
     </table>
 </body>
