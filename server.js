@@ -6,6 +6,7 @@ const session = require('express-session')
 const methodOverride = require("method-override")
 const PORT = process.env.PORT || 3300
 const crmRouter = require('./controllers/crm')
+const userRouter = require("./controllers/user")
 const app = express();
 
 ////////////////////////////////
@@ -19,11 +20,17 @@ app.use("/static",express.static("public"))
 app.use(session({
     secret: process.env.SECRET || 'Bruh',
     store: MongoStore.create({mongoUrl: process.env.DATABASE_URL}),
-    saveUnitialized: true,
+    saveUninitialized: true,
     resave: false
 }))
 
+app.use('/user', userRouter)
 app.use('/customers', crmRouter)
+
+//landing route
+app.get('/',(req,res)=>{
+    res.render('landingpage.ejs')
+})
 
 //listener
 app.listen(PORT, ()=>console.log(`TURNING UP ON PORT NUMBER ${PORT}`))

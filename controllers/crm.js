@@ -49,6 +49,7 @@ router.get("/new", (req,res)=>{
 
 //CREATE route
 router.post("/", (req,res)=>{
+    // req.body.Creator = req.session.username
     Customer.create(req.body, (err, createdCust) =>{
         res.redirect("/customers")
     })
@@ -56,9 +57,11 @@ router.post("/", (req,res)=>{
 
 //SHOW Route
 router.get("/:id",(req, res)=>{
-    Customer.findById(req.body.id)
-    .then((customer)=>{
-        res.render("customers/show.ejs",{customer})
+    Customer.findById(req.params.id)
+    .then((customer) => {
+        //res.render("customers/show.ejs",{customer})
+        res.send(customer)
+        console.log(customer)
     })
 })
 
