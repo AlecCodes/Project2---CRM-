@@ -25,9 +25,5 @@ app.use(session({
 
 app.use('/customers', crmRouter)
 
-app.get("/",(req,res)=>{
-    res.render("home.ejs")
-})
-
 //listener
 app.listen(PORT, ()=>console.log(`TURNING UP ON PORT NUMBER ${PORT}`))

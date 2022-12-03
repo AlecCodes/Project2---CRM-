@@ -37,13 +37,13 @@ router.get("/seed",(req,res)=>{
 router.get("/",(req,res)=>{
     Customer.find({})
     .then((customers)=>{
-        res.render('home.ejs',{customers})
+        res.render('customers/home.ejs',{customers})
     })
 })
 
 //NEW route
 router.get("/new", (req,res)=>{
-    res.render("new.ejs")
+    res.render("customers/new.ejs")
 })
 
 
@@ -58,7 +58,7 @@ router.post("/", (req,res)=>{
 router.get("/:id",(req, res)=>{
     Customer.findById(req.body.id)
     .then((customer)=>{
-        res.render("show.ejs",{customer})
+        res.render("customers/show.ejs",{customer})
     })
 })
 
