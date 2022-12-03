@@ -13,7 +13,7 @@
         <tbody>
             <% for (let i = 0; i < customers.length; i++) {%>
                 <tr>
-                    <td><%= customers[i].name %></td>
+                    <td><a href="/customers/<%=customers[i]._id%>"><%= customers[i].name %></a></td>
                     <td><%= customers[i].DOB%></td>
                 </tr>
             <% } %>
