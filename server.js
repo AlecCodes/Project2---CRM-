@@ -1,20 +1,20 @@
-const MongoStore = require('connect-mongo')
+//const MongoStore = require('connect-mongo')
 const express = require('express')
 require('dotenv').config()
 const morgan = require('morgan')
-const session = require('express-session')
-const methodOverride = require("method-override")
+// const session = require('express-session')
+// const methodOverride = require("method-override")
 const PORT = process.env.PORT || 3300
-//const crmRouter = require('./controllers/crm')
-const app = express()
+// const crmRouter = require('./controllers/crm')
+const app = express();
 
 ////////////////////////////////
 //MIDDLEWARE
 ////////////////////////////////
 app.use("/static",express.static("public"))
-app.use(express.urlencoded)
+app.use(express.urlencoded({extended:true}))
 app.use(morgan("tiny"))
-app.use(methodOverride("_method"))
+//app.use(methodOverride("_method"))
 app.use("/static",express.static("public"))
 // app.use(session({
 //     secret: process.env.SECRET || 'Bruh',
@@ -25,8 +25,8 @@ app.use("/static",express.static("public"))
 
 // app.use('/customers', crmRouter)
 
-app.get("/hello",(req,res)=>{
-    res.send("HELLO!")
+app.get("/",(req,res)=>{
+    res.render("home.ejs")
 })
 
 //listener
