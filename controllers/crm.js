@@ -22,8 +22,8 @@ router.use((req,res,next)=>{
 /////////////////////////////
 router.get("/seed",(req,res)=>{
     const startCustomers = [
-        {name: "Alec", DOB:"05/07/1995"},
-        {name: "Mr. Bean", DOB:"08/13/2017"}
+        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondance: [{date:'12/4/2022', body:"Said what up to alec"}]},
+        {name: "Mr. Bean", DOB:"08/13/2017", creator:"GOD", correspondance: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'}]}
     ]
     Customer.deleteMany({}, (err,data) => {
         Customer.create(startCustomers,(err,createdCusties) =>{
