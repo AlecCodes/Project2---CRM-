@@ -65,7 +65,10 @@ router.post("/", (req,res)=>{
 
 //EDIT route
 router.get("/:id/edit", (req,res)=>{
-    res.render("customers/edit.ejs")
+    Customer.findById(req.params.id)
+    .then((customer) =>
+    {res.render("customers/edit.ejs",{customer})}
+    )
 })
 
 //SHOW Route
