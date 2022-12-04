@@ -70,6 +70,10 @@ router.post("/", (req,res)=>{
     })
 })
 
+router.post("/:id/newCorrespondence",(req,res)=>{
+    console.log(req.body)
+})
+
 //EDIT route
 router.get("/:id/edit", (req,res)=>{
     Customer.findById(req.params.id)
