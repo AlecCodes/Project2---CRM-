@@ -78,6 +78,14 @@ router.get("/:id/edit", (req,res)=>{
     )
 })
 
+router.get("/:id/newCorrespondence", (req,res)=>{
+    Customer.findById(req.params.id)
+    .then((customer)=>{
+        res.render("customers/newCorrespondence.ejs",{customer})
+    })
+})
+
+
 //SHOW Route
 router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)

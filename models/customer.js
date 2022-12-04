@@ -9,7 +9,7 @@ const customerSchema = new Schema({
     name: String,
     DOB: String,
     creator: String,
-    correspondance: [{date: String, body: String}],
+    correspondence: [{date: String, body: String}],
 })
 
 const Customer = model("customer", customerSchema)
