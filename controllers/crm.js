@@ -54,6 +54,13 @@ router.post("/:id",(req,res)=>{
     })
 })
 
+//UPDATE route
+router.put("/:id",(req,res)=>{
+    Customer.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedCust) =>{
+        res.redirect("/customers")
+    } )
+})
+
 //CREATE route
 router.post("/", (req,res)=>{
     req.body.creator = req.session.username

@@ -2,9 +2,11 @@
 <html lang="en">
     <%- include('../partials/header') %> 
     <body>
-        <form>
+        <form action = '/customers/<%=customer._id%>/?_method=PUT' method="POST">
             <fieldset>
-                <input type ='text' name = 'name' placeholder="<%= customer.name %> "> 
+                <input type ='text' name = 'name' placeholder="<%= customer.name %> ">
+                <input type = 'text' name = 'DOB' placeholder="<%= customer.DOB %> "> 
+                <input type="submit" value="update">
             </fieldset>
         </form>
     </body>
