@@ -3,4 +3,11 @@
     <%-include("../partials/header")%>
     <h1>ADD NEW correspondence</h1> 
     <h2><%= customer.name %> </h2>
+    <form>
+        <input type="text" name="date" placeholder="Date">
+        <textarea name = 'body'></textarea>
+        <input value="submit" type="submit">
+    </form>
 </html>
+
+<!-- How do I add form submission to the nested obj for correspondence? In our router for newCorrespondence,lets try pushing the req.body into the customer.correspondance array. -->
