@@ -3,6 +3,11 @@
     <%- include('../partials/header') %> 
     <h1><%= customer.name%></h1>
     <h2><%= customer.creator %> </h2>
+    <ul>
+        <% for (let i = 0; i < customer.correspondence.length; i++ ) { %> 
+            <li><%=customer.correspondence[i].date%></li>
+        <% } %> 
+    </ul>
     <a href = "/customers/<%=customer._id%>/edit"><button>EDIT</button></a>
     <a href ="/customers/<%=customer._id%>/newCorrespondence"><button>Add new correspondence record</button></a>
     <form action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
