@@ -46,6 +46,15 @@ router.get("/new", (req,res)=>{
     res.render("customers/new.ejs")
 })
 
+
+router.get("/:id/newCorrespondence", (req,res)=>{
+    Customer.findById(req.params.id)
+    .then((customer)=>{
+        console.log(customer)
+        res.render("customers/newCorrespondence.ejs",{customer})
+    })
+})
+
 //DESTROY route
 router.post("/:id",(req,res)=>{
     Customer.findByIdAndDelete(req.params.id, (err,deletedCust) =>{
@@ -71,14 +80,10 @@ router.post("/", (req,res)=>{
 })
 
 router.post("/:id/newCorrespondence",(req,res)=>{
-    console.log(req.body)
     Customer.findById(req.params.id)
     .then((foundCustomer)=>{
-        console.log(foundCustomer)
-        console.log("BEFORE PUSH: " + foundCustomer.correspondence)
         foundCustomer.correspondence.push(req.body)
-        console.log("AFTER PUSH: " + foundCustomer.correspondence)
-        res.json(foundCustomer)
+        res.redirect('/customers')
     })
 })
 
@@ -88,14 +93,6 @@ router.get("/:id/edit", (req,res)=>{
     .then((customer) =>
     {res.render("customers/edit.ejs",{customer})}
     )
-})
-
-router.get("/:id/newCorrespondence", (req,res)=>{
-    Customer.findById(req.params.id)
-    .then((customer)=>{
-        console.log(customer)
-        res.render("customers/newCorrespondence.ejs",{customer})
-    })
 })
 
 
