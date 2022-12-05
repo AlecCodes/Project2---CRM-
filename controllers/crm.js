@@ -47,14 +47,6 @@ router.get("/new", (req,res)=>{
 })
 
 
-router.get("/:id/newCorrespondence", (req,res)=>{
-    Customer.findById(req.params.id)
-    .then((customer)=>{
-        console.log(customer)
-        res.render("customers/newCorrespondence.ejs",{customer})
-    })
-})
-
 //DESTROY route
 router.post("/:id",(req,res)=>{
     Customer.findByIdAndDelete(req.params.id, (err,deletedCust) =>{
@@ -79,10 +71,23 @@ router.post("/", (req,res)=>{
     })
 })
 
+
+
+router.get("/:id/newCorrespondence", (req,res)=>{
+    Customer.findById(req.params.id)
+    .then((customer)=>{
+        console.log(customer)
+        res.render("customers/newCorrespondence.ejs",{customer})
+    })
+})
+
 router.post("/:id/newCorrespondence",(req,res)=>{
     Customer.findById(req.params.id)
     .then((foundCustomer)=>{
+        console.log("Before push: "+foundCustomer)
         foundCustomer.correspondence.push(req.body)
+        foundCustomer.save()
+        console.log("After push: "+foundCustomer)
         res.redirect('/customers')
     })
 })
