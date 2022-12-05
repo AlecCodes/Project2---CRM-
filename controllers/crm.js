@@ -22,8 +22,8 @@ router.use((req,res,next)=>{
 /////////////////////////////
 router.get("/seed",(req,res)=>{
     const startCustomers = [
-        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondance: [{date:'12/4/2022', body:"Said what up to alec"}]},
-        {name: "Mr. Bean", DOB:"08/13/2017", creator:"GOD", correspondance: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'}]}
+        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}]},
+        {name: "Mr. Bean", DOB:"08/13/2017", creator:"GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'}]}
     ]
     Customer.deleteMany({}, (err,data) => {
         Customer.create(startCustomers,(err,createdCusties) =>{
@@ -64,7 +64,7 @@ router.put("/:id",(req,res)=>{
 //CREATE route
 router.post("/", (req,res)=>{
     req.body.creator = req.session.username
-    console.log(req.body.creator)
+    console.log("Created by user: "+req.body.creator)
     Customer.create(req.body, (err, createdCust) =>{
         res.redirect("/customers")
     })
@@ -72,6 +72,14 @@ router.post("/", (req,res)=>{
 
 router.post("/:id/newCorrespondence",(req,res)=>{
     console.log(req.body)
+    Customer.findById(req.params.id)
+    .then((foundCustomer)=>{
+        console.log(foundCustomer)
+        console.log("BEFORE PUSH: " + foundCustomer.correspondence)
+        foundCustomer.correspondence.push(req.body)
+        console.log("AFTER PUSH: " + foundCustomer.correspondence)
+        res.json(foundCustomer)
+    })
 })
 
 //EDIT route
@@ -85,6 +93,7 @@ router.get("/:id/edit", (req,res)=>{
 router.get("/:id/newCorrespondence", (req,res)=>{
     Customer.findById(req.params.id)
     .then((customer)=>{
+        console.log(customer)
         res.render("customers/newCorrespondence.ejs",{customer})
     })
 })

@@ -3,7 +3,7 @@
     <%-include("../partials/header")%>
     <h1>ADD NEW correspondence</h1> 
     <h2><%= customer.name %> </h2>
-    <form action ="/customers/><%=customer._id%>/newCorrespondence" method = "POST">
+    <form action ="/customers/<%=customer._id%>/newCorrespondence" method = "POST">
         <input type="text" name="date" placeholder="Date">
         <textarea name = 'body'></textarea>
         <input value="submit" type="submit">
