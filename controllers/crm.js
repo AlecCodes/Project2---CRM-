@@ -110,7 +110,7 @@ router.get("/:id",(req, res)=>{
 })
 
 //Show for individual call records. Could we use includes(_id) to find the specific record?
-router.get("/:id/:date",(req,res)=>{
+router.get("/:id/:recordid",(req,res)=>{
     Customer.findById(req.params.id)
     .then((customer)=>{
         console.log(customer.correspondence)
