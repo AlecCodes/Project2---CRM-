@@ -10,6 +10,12 @@
     </ul>
     <a href = "/customers/<%=customer._id%>/edit"><button>EDIT</button></a>
     <a href ="/customers/<%=customer._id%>/newCorrespondence"><button>Add new correspondence record</button></a>
+    <form>
+        <fieldset>
+            <input type = "text" placeholder = "creator name">
+            <input type="submit">
+        </fieldset>
+    </form>
     <form action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
         <input type="submit" value="delete">
     </form>
