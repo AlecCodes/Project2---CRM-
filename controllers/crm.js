@@ -113,12 +113,9 @@ router.get("/:id",(req, res)=>{
 router.get("/:id/:recordid",(req,res)=>{
     Customer.findById(req.params.id)
     .then((customer)=>{
-//        res.send(req.params.recordid)
         for (const corr of customer.correspondence){
-            console.log(corr._id.valueOf())
-            console.log(req.params.recordid)
             if (corr._id.valueOf() === req.params.recordid){
-                res.send(corr)
+                res.render("customers/showCorrespondence.ejs",{corr})
             }
         }
     })
