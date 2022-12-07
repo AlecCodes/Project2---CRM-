@@ -5,7 +5,7 @@
     <h2><%= customer.creator %></h2>
     <ul>
         <% for (let i = 0; i < customer.correspondence.length; i++ ) { %> 
-            <a><li><%=customer.correspondence[i].date%></li></a>
+            <a href = "<%=customer._id%>/1234"><li><%=customer.correspondence[i].date%></li></a>
         <% } %>
     </ul>
     <a href = "/customers/<%=customer._id%>/edit"><button>EDIT</button></a>

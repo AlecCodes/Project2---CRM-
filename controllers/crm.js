@@ -114,6 +114,7 @@ router.get("/:id/:recordid",(req,res)=>{
     Customer.findById(req.params.id)
     .then((customer)=>{
         console.log(customer.correspondence)
+        res.render("customers/showCorrespondence.ejs")
     })
 })
 
