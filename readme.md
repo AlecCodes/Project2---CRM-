@@ -21,3 +21,13 @@ A CRM that keeps track of customers, and reminds you when to do so.
 - HTML/CSS
 - MongoDB
 - Mongoose
+-----
+###Links:
+ERD:
+https://imgur.com/eDts4hr
+
+Trello:
+https://trello.com/b/WOQfoM6W/crm-project
+
+Deployment:
+https://crm-53cf.onrender.com/
