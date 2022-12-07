@@ -42,6 +42,10 @@ router.get("/",(req,res)=>{
     })
 })
 
+router.get('/creatorFilter', (req,res)=>{
+    res.send(req.query.name)
+})
+
 //NEW route
 router.get("/new", (req,res)=>{
     res.render("customers/new.ejs")
