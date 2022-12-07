@@ -43,7 +43,11 @@ router.get("/",(req,res)=>{
 })
 
 router.get('/creatorFilter', (req,res)=>{
-    res.send(req.query.name)
+    const searchParam = req.query.name
+    Customer.find({creator: searchParam})
+    .then((customers) =>{
+        res.render('customers/home.ejs', {customers})
+    })
 })
 
 //NEW route
