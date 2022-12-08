@@ -44,8 +44,16 @@ router.get("/",(req,res)=>{
 })
 
 router.get('/creatorFilter', (req,res)=>{
-    let filterParams = req.query
-    Customer.find(filterParams)
+    console.log(req.query)
+    let filterParams = {}
+    for (let i of Object.keys(req.query)){
+        if(req.query[i]){
+            filterParams[i] = req.query[i]
+        }
+    }
+    console.log(filterParams)
+
+    Customer.find(req.query)
     .then((customers) =>{
         res.render('customers/home.ejs', {customers})
     })
