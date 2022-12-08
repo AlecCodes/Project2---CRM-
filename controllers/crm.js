@@ -53,7 +53,7 @@ router.get('/creatorFilter', (req,res)=>{
     }
     console.log(filterParams)
 
-    Customer.find(req.query)
+    Customer.find(filterParams)
     .then((customers) =>{
         res.render('customers/home.ejs', {customers})
     })
