@@ -44,7 +44,8 @@ router.get("/",(req,res)=>{
 })
 
 router.get('/creatorFilter', (req,res)=>{
-    Customer.find(req.query)
+    let filterParams = req.query
+    Customer.find(filterParams)
     .then((customers) =>{
         res.render('customers/home.ejs', {customers})
     })
