@@ -39,7 +39,8 @@ router.get("/",(req,res)=>{
     Customer.find({})
     .then((customers)=>{
         res.render('customers/home.ejs',{customers})
-    })
+        }
+    )
 })
 
 router.get('/creatorFilter', (req,res)=>{
