@@ -94,18 +94,6 @@ router.get("/:id/newCorrespondence", (req,res)=>{
     .then((customer)=>{
         res.render("customers/newCorrespondence.ejs",{customer})
         console.log(customer.correspondence)
-        customer.correspondence.sort((a,b)=>{
-            const aDate = new Date(a.date)
-            const bDate = new Date(b.date)
-                if (aDate > bDate){
-                    return 1
-                }if (aDate < bDate){
-                    return - 1
-                }else{
-                    return 0
-                }
-            })
-        console.log(customer.correspondence)
     })
 })
 
@@ -133,6 +121,17 @@ router.get("/:id/edit", (req,res)=>{
 router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)
     .then((customer) => {
+        customer.correspondence.sort((a,b)=>{
+            const aDate = new Date(a.date)
+            const bDate = new Date(b.date)
+                if (aDate > bDate){
+                    return 1
+                }if (aDate < bDate){
+                    return - 1
+                }else{
+                    return 0
+                }
+            })
         res.render("customers/show.ejs",{customer})
     })
 })
