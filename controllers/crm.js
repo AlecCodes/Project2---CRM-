@@ -132,6 +132,11 @@ router.get("/:id",(req, res)=>{
                     return 0
                 }
             })
+        //Only set mostRecentDate if the correspondence array ain't empty
+        if(customer.correspondence.length){
+            customer['mostRecentDate'] = customer.correspondence[customer.correspondence.length-1].date
+        }
+        console.log('MOST RECENT>>',customer.mostRecentDate)
         res.render("customers/show.ejs",{customer})
     })
 })
