@@ -44,15 +44,12 @@ router.get("/",(req,res)=>{
 })
 
 router.get('/creatorFilter', (req,res)=>{
-    console.log(req.query)
     let filterParams = {}
     for (let i of Object.keys(req.query)){
         if(req.query[i]){
             filterParams[i] = req.query[i]
         }
     }
-    console.log(filterParams)
-
     Customer.find(filterParams)
     .then((customers) =>{
         res.render('customers/home.ejs', {customers})
@@ -92,20 +89,33 @@ router.post("/", (req,res)=>{
 
 
 router.get("/:id/newCorrespondence", (req,res)=>{
+    
     Customer.findById(req.params.id)
     .then((customer)=>{
-        console.log(customer)
         res.render("customers/newCorrespondence.ejs",{customer})
+        console.log(customer.correspondence)
+        customer.correspondence.sort((a,b)=>{
+            const aDate = new Date(a.date)
+            const bDate = new Date(b.date)
+                if (aDate > bDate){
+                    return 1
+                }if (aDate < bDate){
+                    return - 1
+                }else{
+                    return 0
+                }
+            })
+        console.log(customer.correspondence)
     })
 })
 
 router.post("/:id/newCorrespondence",(req,res)=>{
     Customer.findById(req.params.id)
     .then((foundCustomer)=>{
-        console.log("Before push: "+foundCustomer)
+        //console.log("Before push: "+foundCustomer)
         foundCustomer.correspondence.push(req.body)
         foundCustomer.save()
-        console.log("After push: "+foundCustomer)
+        //console.log("After push: "+foundCustomer)
         res.redirect('/customers')
     })
 })
