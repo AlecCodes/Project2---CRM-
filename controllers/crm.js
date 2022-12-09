@@ -23,7 +23,7 @@ router.use((req,res,next)=>{
 router.get("/seed",(req,res)=>{
     const startCustomers = [
         {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}]},
-        {name: "Mr. Bean", DOB:"08/13/2017", creator:"DOG GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'}]},
+        {name: "Mr. Bean", DOB:"08/13/2017", creator:"DOG GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'},{date: '12/9/2022', body: "made bean dinner"}]},
         {name: "Dexter", DOB:"03/01/2010", creator:"DOG GOD", correspondence: []}
     ]
     Customer.deleteMany({}, (err,data) => {
@@ -39,10 +39,10 @@ router.get("/",(req,res)=>{
     Customer.find({})
     .then((customers)=>{
         //Upon hitting index route (which should be the first step of a session) we sort the correspondence and then save to update the db with the sorted calls
-        for(let i of customers){
-            i.sorter()
-            i.save()            
-        }
+        for(let customer of customers){
+            customer.sorter()
+            customer.save()               
+        }     
         res.render('customers/home.ejs',{customers})
         }
     )
@@ -51,6 +51,7 @@ router.get("/",(req,res)=>{
 router.get('/creatorFilter', (req,res)=>{
     let filterParams = {}
     for (let i of Object.keys(req.query)){
+        //ignore the empty query params/search filters
         if(req.query[i]){
             filterParams[i] = req.query[i]
         }
@@ -105,7 +106,6 @@ router.get("/:id/newCorrespondence", (req,res)=>{
 router.post("/:id/newCorrespondence",(req,res)=>{
     Customer.findById(req.params.id)
     .then((foundCustomer)=>{
-        //console.log("Before push: "+foundCustomer)
         foundCustomer.correspondence.push(req.body)
         foundCustomer.save()
         //console.log("After push: "+foundCustomer)
@@ -126,7 +126,7 @@ router.get("/:id/edit", (req,res)=>{
 router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)
     .then((customer) => {
-        //Only set mostRecentDate if the correspondence array ain't empty
+        //Only set mostRecentDate if the correspondence array ain't empty - How can I save this to the db?
         if(customer.correspondence.length){
             customer['mostRecentDate'] = customer.correspondence[customer.correspondence.length-1].date
         }
