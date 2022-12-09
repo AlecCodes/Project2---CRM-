@@ -22,9 +22,9 @@ router.use((req,res,next)=>{
 /////////////////////////////
 router.get("/seed",(req,res)=>{
     const startCustomers = [
-        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}], lastContact: undefined},
-        {name: "Mr. Bean", DOB:"08/13/2017", creator:"DOG GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'},{date: '12/9/2022', body: "made bean dinner"}], lastContact:undefined},
-        {name: "Dexter", DOB:"03/01/2010", creator:"DOG GOD", correspondence: [], lastContact: undefined}
+        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}], lastContact: '12/4/2022'},
+        {name: "Mr. Bean", DOB:"08/13/2017", creator:"DOG GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'},{date: '12/9/2022', body: "made bean dinner"}], lastContact:'12/4/2022'},
+        {name: "Dexter", DOB:"03/01/2010", creator:"DOG GOD", correspondence: [], lastContact: null}
     ]
     Customer.deleteMany({}, (err,data) => {
         Customer.create(startCustomers,(err,createdCusties) =>{
