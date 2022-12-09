@@ -10,6 +10,7 @@ const customerSchema = new Schema({
     DOB: String,
     creator: String,
     correspondence: [{date: String, body: String}],
+    lastContact: Date
 })
 
 customerSchema.methods.sorter = function(){

@@ -22,9 +22,9 @@ router.use((req,res,next)=>{
 /////////////////////////////
 router.get("/seed",(req,res)=>{
     const startCustomers = [
-        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}]},
-        {name: "Mr. Bean", DOB:"08/13/2017", creator:"DOG GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'},{date: '12/9/2022', body: "made bean dinner"}]},
-        {name: "Dexter", DOB:"03/01/2010", creator:"DOG GOD", correspondence: []}
+        {name: "Alec", DOB:"05/07/1995", creator: "GOD", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}], lastContact: undefined},
+        {name: "Mr. Bean", DOB:"08/13/2017", creator:"DOG GOD", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'},{date: '12/9/2022', body: "made bean dinner"}], lastContact:undefined},
+        {name: "Dexter", DOB:"03/01/2010", creator:"DOG GOD", correspondence: [], lastContact: undefined}
     ]
     Customer.deleteMany({}, (err,data) => {
         Customer.create(startCustomers,(err,createdCusties) =>{
@@ -127,10 +127,10 @@ router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)
     .then((customer) => {
         //Only set mostRecentDate if the correspondence array ain't empty - How can I save this to the db?
-        if(customer.correspondence.length){
-            customer['mostRecentDate'] = customer.correspondence[customer.correspondence.length-1].date
-        }
-        console.log('MOST RECENT>>',customer.mostRecentDate)
+        // if(customer.correspondence.length){
+        //     customer['mostRecentDate'] = customer.correspondence[customer.correspondence.length-1].date
+        // }
+        // console.log('MOST RECENT>>',customer.mostRecentDate)
         res.render("customers/show.ejs",{customer})
     })
 })
