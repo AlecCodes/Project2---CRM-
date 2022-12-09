@@ -121,17 +121,6 @@ router.get("/:id/edit", (req,res)=>{
 router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)
     .then((customer) => {
-        customer.correspondence.sort((a,b)=>{
-            const aDate = new Date(a.date)
-            const bDate = new Date(b.date)
-                if (aDate > bDate){
-                    return 1
-                }if (aDate < bDate){
-                    return - 1
-                }else{
-                    return 0
-                }
-            })
         //Only set mostRecentDate if the correspondence array ain't empty
         if(customer.correspondence.length){
             customer['mostRecentDate'] = customer.correspondence[customer.correspondence.length-1].date
