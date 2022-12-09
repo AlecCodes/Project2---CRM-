@@ -38,6 +38,11 @@ router.get("/seed",(req,res)=>{
 router.get("/",(req,res)=>{
     Customer.find({})
     .then((customers)=>{
+        //Upon hitting index route (which should be the first step of a session) we sort the correspondence and then save to update the db with the sorted calls
+        for(let i of customers){
+            i.sorter()
+            i.save()            
+        }
         res.render('customers/home.ejs',{customers})
         }
     )
