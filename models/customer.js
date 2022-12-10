@@ -27,6 +27,10 @@ customerSchema.methods.sorter = function(){
         })
 }
 
+customerSchema.methods.updateLastContact = function(){
+    this.lastContact = '1/1/2000'
+}
+
 const Customer = model("customer", customerSchema)
 
 

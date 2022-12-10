@@ -41,6 +41,7 @@ router.get("/",(req,res)=>{
         //Upon hitting index route (which should be the first step of a session) we sort the correspondence and then save to update the db with the sorted calls
         for(let customer of customers){
             customer.sorter()
+            customer.updateLastContact()
             customer.save()               
         }     
         res.render('customers/home.ejs',{customers})
@@ -107,9 +108,8 @@ router.post("/:id/newCorrespondence",(req,res)=>{
     Customer.findById(req.params.id)
     .then((customer)=>{
         customer.correspondence.push(req.body)
-        //Only set mostRecentDate if the correspondence array ain't empty - How can I save this to the db?
-        customer.lastContact = customer.correspondence[customer.correspondence.length-1].date
-        console.log('MOST RECENT>>',customer.lastContact)
+        // customer.lastContact = customer.correspondence[customer.correspondence.length-1].date
+        // console.log('MOST RECENT>>',customer.lastContact)
         customer.save()
         res.redirect('/customers')
     })
