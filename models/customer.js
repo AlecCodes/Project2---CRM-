@@ -8,7 +8,10 @@ const {Schema, model} = mongoose
 const customerSchema = new Schema({
     name: String,
     DOB: String,
+    phone: String,
+    email: String,
     creator: String,
+    org: String,
     correspondence: [{date: String, body: String}],
     lastContact: Date
 })
