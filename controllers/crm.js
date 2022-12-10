@@ -105,10 +105,12 @@ router.get("/:id/newCorrespondence", (req,res)=>{
 
 router.post("/:id/newCorrespondence",(req,res)=>{
     Customer.findById(req.params.id)
-    .then((foundCustomer)=>{
-        foundCustomer.correspondence.push(req.body)
-        foundCustomer.save()
-        //console.log("After push: "+foundCustomer)
+    .then((customer)=>{
+        customer.correspondence.push(req.body)
+        //Only set mostRecentDate if the correspondence array ain't empty - How can I save this to the db?
+        customer.lastContact = customer.correspondence[customer.correspondence.length-1].date
+        console.log('MOST RECENT>>',customer.lastContact)
+        customer.save()
         res.redirect('/customers')
     })
 })
@@ -126,11 +128,6 @@ router.get("/:id/edit", (req,res)=>{
 router.get("/:id",(req, res)=>{
     Customer.findById(req.params.id)
     .then((customer) => {
-        //Only set mostRecentDate if the correspondence array ain't empty - How can I save this to the db?
-        // if(customer.correspondence.length){
-        //     customer['mostRecentDate'] = customer.correspondence[customer.correspondence.length-1].date
-        // }
-        // console.log('MOST RECENT>>',customer.mostRecentDate)
         res.render("customers/show.ejs",{customer})
     })
 })
