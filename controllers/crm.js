@@ -22,7 +22,7 @@ router.use((req,res,next)=>{
 /////////////////////////////
 router.get("/seed",(req,res)=>{
     const startCustomers = [
-        {name: "Alec", DOB:"05/07/1995", phone:'555-555-5555', email: 'Alec@gmail.com', creator: "GOD", org: "General Assembly", correspondence: [{date:'12/4/2022', body:"Said what up to alec"}], lastContact: '12/4/2022'},
+        {name: "Alec", DOB:"05/07/1995", phone:'555-555-5555', email: 'Alec@gmail.com', creator: "GOD", org: "General Assembly", correspondence: [{date:'12/4/2021', body:"Said what up to alec"}], lastContact: '12/4/2021'},
         {name: "Mr. Bean", DOB:"08/13/2017", phone:'555-322-1224', email:'mrbean@gmail.com', creator:"DOG GOD", org : "FBI", correspondence: [{date:'12/4/2022', body:"Said what up to bean"}, {date: '08/13/2017', body:'Bean born'},{date: '12/9/2022', body: "made bean dinner"}], lastContact:'12/9/2022'},
         {name: "Dexter", DOB:"03/01/2010", phone:'555-555-5555', email: 'Dexter@dgmail.com', creator:"DOG GOD", org: 'NBA', correspondence: [], lastContact: null}
     ]
