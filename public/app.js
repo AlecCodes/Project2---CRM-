@@ -13,3 +13,8 @@ for (let button of xbutton){
     button.style.backgroundColor = 'red'
     button.addEventListener('click', remove)
 }
+
+if (!notes.length){
+    console.log('empty!')
+}
+console.log(notes)
