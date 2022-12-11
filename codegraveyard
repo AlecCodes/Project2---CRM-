@@ -1,0 +1,34 @@
+////////////////
+//EJS for the messagebox
+////////////////
+<div id ='messageBox'>
+<% let today = new Date() %>
+<%for (const customer of customers) {%>
+    <% if (customer.lastContact && ((today - customer.lastContact)/86400000) > 14) {%> 
+    <div id="notification"><%= customer.name %> LAST CONTACTED AT LEAST TWO WEEKS AGO <button id = 'X'>X</button></div>
+    <% } %> 
+<% } %>   
+</div>
+
+
+//app.js for messagebox
+
+const notes = document.querySelectorAll('#notification')
+const xbutton = document.querySelectorAll('#X')
+
+function remove(){
+    this.parentNode.remove()
+}
+
+// for (let note of notes){
+//     note.style.backgroundColor = 'red'
+// }
+
+for (let button of xbutton){
+    button.style.backgroundColor = 'red'
+    button.addEventListener('click', remove)
+}
+
+if (!notes.length){
+    console.log('empty!')
+}

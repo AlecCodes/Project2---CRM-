@@ -30,15 +30,6 @@
         </fieldset>
     </form>
     <a href="/customers/"><Button>Clear Filters</Button></a>    
-
-    <div id ='messageBox'>
-        <% let today = new Date() %>
-        <%for (const customer of customers) {%>
-            <% if (customer.lastContact && ((today - customer.lastContact)/86400000) > 14) {%> 
-            <div id="notification"><%= customer.name %> LAST CONTACTED AT LEAST TWO WEEKS AGO <button id = 'X'>X</button></div>
-            <% } %> 
-        <% } %>   
-    </div>
     <a href="/customers/new"><button>NEW</button></a>
     <a href="/user/logout"><button>LOGOUT</button></a>
 </body>
