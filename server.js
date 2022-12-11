@@ -16,7 +16,7 @@ app.use("/static",express.static("public"))
 app.use(express.urlencoded({extended:true}))
 app.use(morgan("tiny"))
 app.use(methodOverride("_method"))
-app.use("/static",express.static("public"))
+app.use(express.static("public"))
 app.use(session({
     secret: process.env.SECRET || 'Bruh',
     store: MongoStore.create({mongoUrl: process.env.DATABASE_URL}),
