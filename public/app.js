@@ -1,5 +1,5 @@
 const notes = document.querySelectorAll('#notification')
-const xbutton = document.querySelectorAll('span')
+const xbutton = document.querySelectorAll('#X')
 
 function remove(){
     this.parentNode.remove()

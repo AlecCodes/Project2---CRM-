@@ -33,7 +33,7 @@
         <% let today = new Date() %>
         <%for (const customer of customers) {%>
             <% if (customer.lastContact && ((today - customer.lastContact)/86400000) > 14) {%> 
-            <div id="notification"><%= customer.name %> LAST CONTACTED AT LEAST TWO WEEKS AGO <span>X</span></div>
+            <div id="notification"><%= customer.name %> LAST CONTACTED AT LEAST TWO WEEKS AGO <button id = 'X'>X</button></div>
             <% } %> 
         <% } %>   
     </div>
