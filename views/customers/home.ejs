@@ -7,14 +7,14 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>DOB</th>
+                <th>Date of last contact</th>
             </tr>
         </thead>
         <tbody>
             <% for (let i = 0; i < customers.length; i++) {%>
                 <tr>
                     <td><a href="/customers/<%=customers[i]._id%>"><%= customers[i].name %></a></td>
-                    <td><%= customers[i].DOB%></td>
+                    <td><%= customers[i].lastContact%></td>
                 </tr>
             <% } %>
         </tbody>  
