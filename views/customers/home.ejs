@@ -31,6 +31,10 @@
 
     <div id ='messageBox'>
         <div>TEST</div>
+        <% let today = new Date().toLocaleDateString() %>
+        <%for (const customer of customers) {%>
+            <div><%= customer.name %> </div>
+        <% } %>   
     </div>
     <a href="/customers/new"><button>NEW</button></a>
     <a href="/user/logout"><button>LOGOUT</button></a>
