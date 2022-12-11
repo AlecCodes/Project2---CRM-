@@ -7,7 +7,7 @@ const {Schema, model} = mongoose
 
 const customerSchema = new Schema({
     name: String,
-    DOB: String,
+    DOB: Date,
     phone: String,
     email: String,
     creator: String,
