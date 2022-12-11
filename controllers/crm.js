@@ -70,7 +70,7 @@ router.get("/new", (req,res)=>{
 
 
 //DESTROY route
-router.post("/:id",(req,res)=>{
+router.delete("/:id",(req,res)=>{
     Customer.findByIdAndDelete(req.params.id, (err,deletedCust) =>{
         console.log(err,deletedCust)
         res.redirect('/customers')
