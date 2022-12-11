@@ -2,8 +2,11 @@
 <html lang="en">
     <%- include('../partials/header') %> 
     <body>
+        <h3><%=corr.date%> </h3>
         <div>
-            <h1><%=corr.body%> </h1>
+            <div><%=corr.body%> </div>
         </div>
+        <a href ="/customers/<%=customer._id%> "><button>Back</button></a>
+        <a href = "/customers/"><button>Home</button></a>
     </body>
 </html>

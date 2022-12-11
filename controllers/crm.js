@@ -138,7 +138,7 @@ router.get("/:id/:recordid",(req,res)=>{
     .then((customer)=>{
         for (const corr of customer.correspondence){
             if (corr._id.valueOf() === req.params.recordid){
-                res.render("customers/showCorrespondence.ejs",{corr})
+                res.render("customers/showCorrespondence.ejs",{corr: corr, customer:customer})
             }
         }
     })
