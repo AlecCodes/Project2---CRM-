@@ -1,8 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('../partials/header') %> 
-    <h1><%= customer.name%></h1>
-    <h2><%= customer.creator %></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <td><%= customer.name%></td>
+            </tr>
+            <tr>
+                <th>Creator</th>
+                <td><%= customer.creator %> </td>
+            </tr>
+            <tr>
+                <th>Organization</th>
+                <td><%= customer.org %> </td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><%= customer.phone %> </td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><%= customer.email%> </td>
+            </tr>
+        </thead>
+    </table>
     <ul>
         <% for (let i = 0; i < customer.correspondence.length; i++ ) { %> 
             <a href = "<%=customer._id%>/<%=customer.correspondence[i]._id%>"><li><%=customer.correspondence[i].date%></li></a>
