@@ -1,5 +1,7 @@
 const notes = document.querySelectorAll('#notification')
 const xbutton = document.querySelectorAll('#X')
+const lastContactElement = document.querySelectorAll("#lastContact")
+const today = new Date()
 
 function remove(){
     this.parentNode.remove()
@@ -17,4 +19,10 @@ for (let button of xbutton){
 if (!notes.length){
     console.log('empty!')
 }
-console.log(notes)
+
+for (const i of lastContactElement){
+   const lastContactDate = new Date(i.innerHTML)
+   if ((lastContactDate)&& ((today - lastContactDate)/86400000 > 14)){
+    i.style.backgroundColor='red'
+   }
+}
