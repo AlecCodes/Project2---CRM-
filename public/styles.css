@@ -14,3 +14,16 @@ h1 {
     background-color: #474e5d;
     padding-top: 50px;
 }
+
+#navContainer{
+    display: flex;
+}
+
+#navButtons{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+#buttonContainer{
+}

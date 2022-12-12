@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <%-include("../partials/header")%>
-    <%let today = new Date().toLocaleDateString() %> 
-    <h1>TODAYS DATE <%=today%> </h1>
-
-    <h1>ADD NEW correspondence</h1> 
+    <h1>Add new correspondence record</h1> 
     <h2><%= customer.name %> </h2>
     <form action ="/customers/<%=customer._id%>/newCorrespondence" method = "POST">
         <input type="date" name="date" placeholder="Date">
         <textarea name = 'body'></textarea>
         <input value="submit" type="submit">
     </form>
+    <a href = "/customers/<%=customer._id%>"><button>Back</button></a>
 </html>
 

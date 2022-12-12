@@ -2,36 +2,47 @@
 <html lang="en">
 <%- include('../partials/header') %> 
 <body>
-    <h1>Customers</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Organization</th>
-                <th>Date of last contact</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for (let i = 0; i < customers.length; i++) {%>
+    <div id ='navButtons'>
+        <h1>Customers</h1>   
+        <div id = 'buttonContainer'>
+            <a href="/customers/new"><button>NEW</button></a>
+            <a href="/user/logout"><button>LOGOUT</button></a>
+        </div>
+    </div>
+    <div id="navContainer">
+        <div id ='filters'>
+            <form action = "/customers/creatorFilter"  method='get'>
+                <fieldset>
+                    <input type = "text" placeholder = "Creator name" name = 'creator'>
+                    <br>
+                    <input type = "text" placeholder = "Contact name" name ='name'>
+                    <br>
+                    <input type= "text" placeholder = "Org name" name="org">
+                    <br>
+                    <input type="submit" value="Apply filter(s)">
+                </fieldset>
+            </form>
+            <a href="/customers/"><Button>Clear Filters</Button></a>
+        </div>
+        <table>
+            <thead>
                 <tr>
-                    <td><a href="/customers/<%=customers[i]._id%>"><%= customers[i].name %></a></td>
-                    <td><%=customers[i].org%> </td>
-                    <td id ="lastContact"><%= customers[i].lastContact%></td>
+                    <th>Name</th>
+                    <th>Organization</th>
+                    <th>Date of last contact</th>
                 </tr>
-            <% } %>
-        </tbody>  
-    </table>
-    <form action = "/customers/creatorFilter"  method='get'>
-        <fieldset>
-            <input type = "text" placeholder = "Creator name" name = 'creator'>
-            <input type = "text" placeholder = "Contact name" name ='name'>
-            <input type= "text" placeholder = "Org name" name="org">
-            <input type="submit" value="Apply filter(s)">
-        </fieldset>
-    </form>
-    <a href="/customers/"><Button>Clear Filters</Button></a>    
-    <a href="/customers/new"><button>NEW</button></a>
-    <a href="/user/logout"><button>LOGOUT</button></a>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < customers.length; i++) {%>
+                    <tr>
+                        <td><a href="/customers/<%=customers[i]._id%>"><%= customers[i].name %></a></td>
+                        <td><%=customers[i].org%> </td>
+                        <td id ="lastContact"><%= customers[i].lastContact%></td>
+                    </tr>
+                <% } %>
+            </tbody>  
+        </table>
+    </div>
 </body>
 </html>
 <script src ="/app.js" defer></script>
