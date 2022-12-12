@@ -4,7 +4,7 @@ h1 {
 
 .modal{
     display: none;
-    position: fixed; /* Stay in place */
+    position: fixed;
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -12,7 +12,7 @@ h1 {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: #474e5d;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 #navContainer{
@@ -24,3 +24,6 @@ h1 {
     align-items: flex-end;
     justify-content: space-evenly;
 }
+
+td { border-left:.2px solid grey; }
+tr { border-left:.2px solid grey; }
