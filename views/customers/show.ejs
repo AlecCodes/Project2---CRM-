@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<button onclick="document.getElementById('confirmDelete').style.display=='block'">Modal</button>
+<button onclick="document.getElementById('confirmDelete').style.display='block'">Modal</button>
 <div id = 'confirmDelete' class = 'modal' >
     <form>
         <div class ='container'>
             <h1>U sure??</h1>    
-            <input type="submit" value="Cancel">
+            <a href="/customers/<%=customer._id%> "><input type="button" value="Cancel"><a>
             <input type="submit" value="Delete">
         </div>
     </form>
