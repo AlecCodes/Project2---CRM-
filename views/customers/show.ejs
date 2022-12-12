@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<button onclick="document.getElementById('confirmDelete').style.display='block'">Modal</button>
 <div id = 'confirmDelete' class = 'modal' >
-    <form>
+    <form action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
         <div class ='container'>
-            <h1>U sure??</h1>    
+            <h1>Are you sure? This record will be permanantley deleted...</h1>    
             <a href="/customers/<%=customer._id%> "><input type="button" value="Cancel"><a>
             <input type="submit" value="Delete">
         </div>
@@ -42,18 +41,9 @@
     </ul>
     <a href = "/customers/<%=customer._id%>/edit"><button>EDIT</button></a>
     <a href ="/customers/<%=customer._id%>/newCorrespondence"><button>Add new correspondence record</button></a>
-    <form id = 'deleteForm' onclick="deleter()" action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
+    <button onclick="document.getElementById('confirmDelete').style.display='block'">Delete</button>
+    <!-- <form id = 'deleteForm' action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
         <input type="submit" value="delete">
-    </form>
+    </form> -->
     <a href = "/customers/"><button>Back</button></a>
 </html>
-<script>
-    function deleter() {
-        let result = confirm("Are you sure you want to delete?")
-        if (result){
-            console.log('clicked OK')
-        } else {
-            
-        }
-    }
-</script>
