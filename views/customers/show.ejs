@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<button onclick="document.getElementById('confirmDelete').style.display=='block'">Modal</button>
+<div id = 'confirmDelete' class = 'modal' >
+    <form>
+        <div class ='container'>
+            <h1>U sure??</h1>    
+            <input type="submit" value="Cancel">
+            <input type="submit" value="Delete">
+        </div>
+    </form>
+</div>
 <html lang="en">
     <%- include('../partials/header') %> 
     <table>
@@ -32,8 +42,18 @@
     </ul>
     <a href = "/customers/<%=customer._id%>/edit"><button>EDIT</button></a>
     <a href ="/customers/<%=customer._id%>/newCorrespondence"><button>Add new correspondence record</button></a>
-    <form action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
+    <form id = 'deleteForm' onclick="deleter()" action = "/customers/<%=customer._id%>/?_method=DELETE" method="POST">
         <input type="submit" value="delete">
     </form>
     <a href = "/customers/"><button>Back</button></a>
 </html>
+<script>
+    function deleter() {
+        let result = confirm("Are you sure you want to delete?")
+        if (result){
+            console.log('clicked OK')
+        } else {
+            
+        }
+    }
+</script>
