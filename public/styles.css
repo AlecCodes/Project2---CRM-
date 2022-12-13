@@ -1,5 +1,5 @@
 h1 {
-    color: blue
+    color: white
 }
 
 .modal{
@@ -15,11 +15,18 @@ h1 {
     padding-top: 100px;
 }
 
-#navContainer{
+#tableContainer{
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#filters{
+    background-color: blue;
 }
 
 #navButtons{
+    background-color: blue;
     display: flex;
     align-items: flex-end;
     justify-content: space-evenly;
