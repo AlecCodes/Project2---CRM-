@@ -2,6 +2,10 @@ h1 {
     color: white
 }
 
+#showh1{
+    background-color: blue;
+}
+
 .modal{
     display: none;
     position: fixed;
